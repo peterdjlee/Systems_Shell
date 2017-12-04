@@ -31,7 +31,7 @@ char ** parse_args(char * line, char delimiter) {
 }
 
 /*
-  void redir_in(char ** args)
+  void redir_out(char ** args)
   Description:
     Implements redirecting in by writing to a file
   Arguments:
@@ -39,18 +39,16 @@ char ** parse_args(char * line, char delimiter) {
   Return Value:
     N/A
 */
-void redir_in(char ** args){
-    //printf("this happened!\n");
+void redir_out(char ** args){
     int cmd, file, i;
     i = 0;
-    //printf("%s\n",args[3]);
+    // Finding where ">" is
     while (args[i]) {
       if (strcmp(args[i],">") == 0){
         break;
       }
       i++;
     }
-    //printf("this is i: %d\n", i);
     file = i + 1;
     int fd, b, c;
     fd = open(args[file], O_CREAT | O_WRONLY | O_TRUNC | O_RDONLY, 0644);
@@ -86,7 +84,7 @@ void exec_one(char ** args) {
       while (args[i]) {
         if (strchr(args[i], '>') != NULL) {
           //printf("IT WAS FOUND!! \n");
-          redir_in(args);
+          redir_out(args);
           break;
         }
         i++;
