@@ -29,4 +29,20 @@ Period 10
 
 <h2> Files and Function Headers </h2>
 <h3> main.c </h3>
+<h4>char ** parse_args(char * line, char delimiter)<h4>
+  <ul>
+  <li>Description:</li>
+    <ul>
+      <li>Parses the given string using the given delimiter</li>
+    </ul>
+  <li>Arguments:</li>
+    <ul>
+      <li>char * line -> A pointer to the original string</li>
+      <li>char delimiter -> The character that is going to be used to parse the string</li>
+    </ul>
+  <li>Return Value:</li>
+    <ul>
+      <li>A char ** which consists of the parsed strings</li>
+    </ul>
+  </ul>
 <h3> shell.c </h3>
