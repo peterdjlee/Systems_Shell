@@ -11,7 +11,7 @@ Period 10
 <li> Displays working directory, like bash </li>
 <li> San execute multiple commands on one line separated with semicolon (";") </li>
 <li> Says something nice when you quit shell! </li>
-<li> When you do something bad in the shell, it will print out the errno </li>
+<li> When you do something bad in the shell, it will print out bash-like errors using errno </li>
 </ul>
 
 <h2> Attempted </h2>
