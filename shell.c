@@ -45,7 +45,6 @@ int main(){
   if (f == 0) {
       //child process
       printf("Child is running!\n");
-
       //don't do it if its exit or cd
       if(!strcmp(args[0], "exit") || !strcmp(args[0], "cd")) {
         exit (0);
