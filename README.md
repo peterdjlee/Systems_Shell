@@ -17,14 +17,14 @@ Period 10
 
 <h2> Attempted </h2>
 <ul>
-<li> Handle multiple commands on one line when semicolons are surrounded with spaces, like " ; " instead of just ";" </li>
+<li> Handle multiple commands on one line when semicolons or commands are surrounded with spaces, like " ; " instead of just ";" </li>
 <li> Redirection and pipes </li>
 </ul>
 
 <h2> Bugs </h2>
 <ul>
 <li> Very occasionally the parser fails and cannot read the commands correctly. We tested it, and every time it happens, it can't read a certain character and reads it as a space. </li>
-<li> Cannot handle multiple commands on one line when semicolon is surrounded by spaces. </li>
+<li> Commands cannot be executed if there are any spaces regardless of usage of semicolons </li>
 </ul>
 
 <h2> Files and Function Headers </h2>
