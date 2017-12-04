@@ -68,3 +68,21 @@ void exec_one(char ** args)
       <li>N/A</li>
     </ul>
   </ul>
+
+  ```c
+void redir_in(char ** args)
+  ```
+  <ul>
+  <li>Description:</li>
+    <ul>
+      <li>Implements redirecting in by writing to a file</li>
+    </ul>
+  <li>Arguments:</li>
+    <ul>
+      <li>char ** args -> A pointer to the original string</li>
+    </ul>
+  <li>Return Value:</li>
+    <ul>
+      <li>N/A</li>
+    </ul>
+  </ul>
