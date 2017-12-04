@@ -10,20 +10,20 @@
 #include <errno.h>
 #include <string.h>
 
-char ** parse_args(char * line){
+char ** parse_args(char * line, char delimiter[]){
   char ** s1 = (char **)malloc(sizeof(line));
 
   int i = 0;
   char * pos;
 
   while(line){
-    s1[i] = strsep(&line, " ");
+    s1[i] = strsep(&line, delimiter);
     if ((pos=strchr(s1[i], '\n')) != NULL) {
       *pos = '\0';
     }
+    printf("s1[%d]:%s\n", i, s1[i]);
     i++;
   }
-
   return s1;
 }
 
@@ -34,8 +34,11 @@ int main(){
   char line[100];
   fgets(line, 100, stdin);
   printf("line is: %s\n", line);
-  char ** args = parse_args(line);
-
+  char ** args = parse_args(line, ";");
+  printf("parsed args\n");
+  char ** first = parse_args(args[0], " ");
+  printf("parsed first\n");
+  char ** second = parse_args(args[1], " "); //
   int f;
   f = fork();
 
@@ -49,7 +52,8 @@ int main(){
       }
 
       //exec
-      execvp(args[0], args);
+      execvp(first[0], first);
+      execvp(second[0], second); //
   }
 
   else {
