@@ -32,7 +32,9 @@ Period 10
 
 <h3> shell.c </h3>
 
-<h4>char ** parse_args(char * line, char delimiter)</h4>
+```c
+char ** parse_args(char * line, char delimiter)
+```
   <ul>
   <li>Description:</li>
     <ul>
@@ -49,7 +51,9 @@ Period 10
     </ul>
   </ul>
   
-<h4>void exec_one(char ** args)</h4>
+  ```c
+void exec_one(char ** args)
+  ```
   <ul>
   <li>Description:</li>
     <ul>
