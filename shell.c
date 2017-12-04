@@ -37,7 +37,6 @@ int main(){
   char ** args = parse_args(line, ";");
   printf("parsed args\n");
   char ** first = parse_args(args[0], " ");
-  printf("parsed first\n");
   char ** second = parse_args(args[1], " "); //
   int f;
   f = fork();
@@ -52,7 +51,10 @@ int main(){
       }
 
       //exec
-      execvp(first[0], first);
+      int i;
+      i = execvp(first[0], first);
+      printf("execvp result: %d\n", i);
+      printf("error: %s\n", strerror(errno));
       execvp(second[0], second); //
   }
 
