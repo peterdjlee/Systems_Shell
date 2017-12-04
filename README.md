@@ -13,6 +13,7 @@ Period 10
 <li> Says something sad but cute when you quit shell! </li>
 <li> When you do something bad in the shell, it will print out bash-like errors using errno </li>
 <li> 'magic' can hide or show your working directory </li>
+<li> Implements redirect stdout </li>
 </ul>
 
 <h2> Attempted </h2>
@@ -25,6 +26,7 @@ Period 10
 <ul>
 <li> Very occasionally the parser fails and cannot read the commands correctly. We tested it, and every time it happens, it can't read a certain character and reads it as a space. </li>
 <li> Commands cannot be executed if there are any spaces regardless of usage of semicolons </li>
+<li> The redirection breaks if multiple ">"s are entered. </li>
 </ul>
 
 <h2> Files and Function Headers </h2>
@@ -70,12 +72,12 @@ void exec_one(char ** args)
   </ul>
 
   ```c
-void redir_in(char ** args)
+void redir_out(char ** args)
   ```
   <ul>
   <li>Description:</li>
     <ul>
-      <li>Implements redirecting in by writing to a file</li>
+      <li>Implements redirecting stdout by writing to a file</li>
     </ul>
   <li>Arguments:</li>
     <ul>
