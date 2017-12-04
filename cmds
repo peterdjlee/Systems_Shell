@@ -1,5 +1,1 @@
-ls -a -l
-ps
-cd newdir
-ls
-exit
+ls -a -l; ps
