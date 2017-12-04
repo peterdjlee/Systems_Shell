@@ -29,7 +29,10 @@ Period 10
 
 <h2> Files and Function Headers </h2>
 <h3> main.c </h3>
-<h4>char ** parse_args(char * line, char delimiter)<h4>
+
+<h3> shell.c </h3>
+
+<h4>char ** parse_args(char * line, char delimiter)</h4>
   <ul>
   <li>Description:</li>
     <ul>
@@ -45,4 +48,19 @@ Period 10
       <li>A char ** which consists of the parsed strings</li>
     </ul>
   </ul>
-<h3> shell.c </h3>
+  
+<h4>void exec_one(char ** args)</h4>
+  <ul>
+  <li>Description:</li>
+    <ul>
+      <li>Forks off a child process and the child process calls execvp to execute the given command</li>
+    </ul>
+  <li>Arguments:</li>
+    <ul>
+      <li>char ** args -> Command line arguments that should be executed</li>
+    </ul>
+  <li>Return Value:</li>
+    <ul>
+      <li>N/A</li>
+    </ul>
+  </ul>
