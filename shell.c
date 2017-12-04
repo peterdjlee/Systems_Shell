@@ -38,6 +38,7 @@ void exec_one(char ** args) {
 
     //don't do it if its exit or cd
     if(!strcmp(args[0], "exit") || !strcmp(args[0], "cd")) {
+      printf("CHILD FINISHED\n");
       exit(0);
     }
     int i = 0;
@@ -45,7 +46,7 @@ void exec_one(char ** args) {
     // printf("I just execed");
     // printf("execvp result: %d\n", i);
     // printf("error: %s\n", strerror(errno));
-    // printf("CHILD FINISHED\n");
+    printf("CHILD FINISHED\n");
     exit(0);
   }
 }
@@ -65,20 +66,19 @@ int main(){
     // printf("Starting %d cmd\n", i);
     char ** cmd = parse_args(args[i], ' ');
     exec_one(cmd);
-    // printf("I just execed my %dth cmd\n", i);
+    printf("Parent is running for %d!\n", i);
     wait(&status);
+    if(!strcmp(cmd[0], "exit")){
+      printf("quitting...\n");
+      exit(0);
+    }
+    if(!strcmp(cmd[0], "cd")) {
+      int works;
+      works = chdir(cmd[1]);
+      printf("runs? %d\n", works);
+    }
+    // printf("I just execed my %dth cmd\n", i);
     i++;
-  }
-
-  printf("Parent is running!\n");
-
-  if(!strcmp(args[0], "exit")){
-    exit(0);
-  }
-  if(!strcmp(args[0], "cd")) {
-    int works;
-    works = chdir(args[1]);
-    printf("runs? %d\n", works);
   }
 
   printf("Parent Done!\n");
