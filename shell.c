@@ -10,21 +10,44 @@
 #include <errno.h>
 #include <string.h>
 
-char ** parse_args(char * line, char delimiter[]){
-  char ** s1 = (char **)malloc(sizeof(line));
+char ** parse_args(char * line, char delimiter){
+  int size = 6;
+  char ** s1 = (char **)malloc(size * sizeof(char *));
 
   int i = 0;
   char * pos;
 
   while(line){
-    s1[i] = strsep(&line, delimiter);
+    s1[i] = strsep(&line, &delimiter);
+    // If newline is there make it null
     if ((pos=strchr(s1[i], '\n')) != NULL) {
       *pos = '\0';
     }
-    printf("s1[%d]:%s\n", i, s1[i]);
     i++;
   }
+  // s1[i - 1] = 0;
+  s1[i] = 0;
   return s1;
+}
+
+void exec_one(char ** args) {
+  int f = fork();
+  if (f == 0) {
+    //child process
+    printf("Child is running!\n");
+
+    //don't do it if its exit or cd
+    if(!strcmp(args[0], "exit") || !strcmp(args[0], "cd")) {
+      exit(0);
+    }
+    int i = 0;
+    i = execvp(args[0], args);
+    // printf("I just execed");
+    // printf("execvp result: %d\n", i);
+    // printf("error: %s\n", strerror(errno));
+    // printf("CHILD FINISHED\n");
+    exit(0);
+  }
 }
 
 int main(){
@@ -34,44 +57,31 @@ int main(){
   char line[100];
   fgets(line, 100, stdin);
   printf("line is: %s\n", line);
-  char ** args = parse_args(line, ";");
-  printf("parsed args\n");
-  char ** first = parse_args(args[0], " ");
-  char ** second = parse_args(args[1], " "); //
-  int f;
-  f = fork();
+  char ** args = parse_args(line, ';');
 
-  if (f == 0) {
-      //child process
-      printf("Child is running!\n");
-      //don't do it if its exit or cd
-      if(!strcmp(args[0], "exit") || !strcmp(args[0], "cd")) {
-        exit (0);
-      }
-
-      //exec
-      int i;
-      i = execvp(first[0], first);
-      printf("execvp result: %d\n", i);
-      printf("error: %s\n", strerror(errno));
-      execvp(second[0], second); //
-  }
-
-  else {
-    int status;
+  int i = 0;
+  int status;
+  while (args[i]) {
+    // printf("Starting %d cmd\n", i);
+    char ** cmd = parse_args(args[i], ' ');
+    exec_one(cmd);
+    // printf("I just execed my %dth cmd\n", i);
     wait(&status);
-    printf("Parent is running!\n");
-
-    if(!strcmp(args[0], "exit")){
-      exit(0);
-    }
-    if(!strcmp(args[0], "cd")) {
-      int works;
-      works = chdir(args[1]);
-      printf("runs? %d\n", works);
-    }
-    printf("Parent Done!\n");
+    i++;
   }
+
+  printf("Parent is running!\n");
+
+  if(!strcmp(args[0], "exit")){
+    exit(0);
+  }
+  if(!strcmp(args[0], "cd")) {
+    int works;
+    works = chdir(args[1]);
+    printf("runs? %d\n", works);
+  }
+
+  printf("Parent Done!\n");
   //printf("error: %s\n", strerror(errno));
   return 0;
 }
