@@ -23,7 +23,6 @@ Period 10
 <ul>
 <li> Very occasionally the parser fails and cannot read the commands correctly. We tested it, and every time it happens, it can't read a certain character and reads it as a space. </li>
 <li> Cannot handle multiple commands on one line when semicolon is surrounded by spaces. </li>
-<li> If something that is not a command is entered into the shell, it does not work. </li>
 </ul>
 
 <h2> Files and Function Headers </h2>
