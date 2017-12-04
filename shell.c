@@ -30,8 +30,17 @@ char ** parse_args(char * line, char delimiter) {
   return s1;
 }
 
+/*
+  void redir_in(char ** args)
+  Description:
+    Implements redirecting in by writing to a file
+  Arguments:
+    char ** args -> A pointer to the original string
+  Return Value:
+    N/A
+*/
 void redir_in(char ** args){
-    printf("this happened!\n");
+    //printf("this happened!\n");
     int cmd, file, i;
     i = 0;
     //printf("%s\n",args[3]);
@@ -41,7 +50,7 @@ void redir_in(char ** args){
       }
       i++;
     }
-    printf("this is i: %d\n", i);
+    //printf("this is i: %d\n", i);
     file = i + 1;
     int fd, b, c;
     fd = open(args[file], O_CREAT | O_WRONLY | O_TRUNC | O_RDONLY, 0644);
@@ -76,7 +85,7 @@ void exec_one(char ** args) {
       int i = 0;
       while (args[i]) {
         if (strchr(args[i], '>') != NULL) {
-          printf("IT WAS FOUND!! \n");
+          //printf("IT WAS FOUND!! \n");
           redir_in(args);
           break;
         }
