@@ -52,7 +52,9 @@ void exec_one(char ** args) {
 }
 
 int main(){
-  printf("~~~~~~~~~~LI-LEE SHELL~~~~~~~~~~\nType 'exit' to exit.\n");
+  printf("~~~~~~~~~~LI-LEE SHELL~~~~~~~~~~\n");
+  printf("Note: You MUST NOT use whitespace when using ;\n");
+  printf("Type 'exit' to exit.\n");
   while (1) {
     char cwd[1024];
     if (getcwd(cwd, sizeof(cwd)) != NULL)
@@ -61,7 +63,7 @@ int main(){
     //reading in stdin and parsing
     char line[100];
     fgets(line, 100, stdin);
-    // printf("line is: %s\n", line);
+    //printf("line is: %s\n", line);
     char ** args = parse_args(line, ';');
 
     int i = 0;
