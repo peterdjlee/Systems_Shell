@@ -61,7 +61,7 @@ int main(){
     //reading in stdin and parsing
     char line[100];
     fgets(line, 100, stdin);
-    printf("line is: %s\n", line);
+    // printf("line is: %s\n", line);
     char ** args = parse_args(line, ';');
 
     int i = 0;
