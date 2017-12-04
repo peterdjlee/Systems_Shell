@@ -5,18 +5,19 @@ Period 10
 
 <h2> Features </h2>
 <ul>
-<li> forks and executes commands </li>
-<li> has a nice greeting when you open the shell! </li>
-<li> handles cd and exit </li>
-<li> displays working directory, like bash </li>
-<li> can execute multiple commands on one line separated with semicolon (";") </li>
-<li> says something nice when you quit shell! </li>
+<li> Forks and executes commands </li>
+<li> Has a nice greeting when you open the shell! </li>
+<li> Handles cd and exit </li>
+<li> Displays working directory, like bash </li>
+<li> San execute multiple commands on one line separated with semicolon (";") </li>
+<li> Says something nice when you quit shell! </li>
+<li> When you do something bad in the shell, it will print out the errno </li>
 </ul>
 
 <h2> Attempted </h2>
 <ul>
-<li> handle multiple commands on one line when semicolons are surrounded with spaces, like " ; " instead of just ";" </li>
-<li> redirection and pipes </li>
+<li> Handle multiple commands on one line when semicolons are surrounded with spaces, like " ; " instead of just ";" </li>
+<li> Redirection and pipes </li>
 </ul>
 
 <h2> Bugs </h2>
