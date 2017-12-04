@@ -12,6 +12,7 @@ Period 10
 <li> San execute multiple commands on one line separated with semicolon (";") </li>
 <li> Says something nice when you quit shell! </li>
 <li> When you do something bad in the shell, it will print out bash-like errors using errno </li>
+<li> magic can hide or show your working directory </li>
 </ul>
 
 <h2> Attempted </h2>
